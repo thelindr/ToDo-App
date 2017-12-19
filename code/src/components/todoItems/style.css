@@ -1,0 +1,14 @@
+.theList {
+  list-style: none;
+  width: 100%;
+  padding-left: 0;
+}
+
+li {
+  color: #333;
+  background-color: pink;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  width: 95%;
+}
