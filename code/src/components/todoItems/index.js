@@ -2,23 +2,21 @@ import React from "react"
 import "./style.css"
 
 class ToDoItems extends React.Component {
-  constructor(props, context) {
-    super(props, context)
 
-    this.createTasks = this.createTasks.bind(this)
-  }
-
-  createTasks(item) {
-    return <li key={item.key}>{item.text}</li>
+  handleCheckboxChange = () => {
+    this.props.onChange(this.props.id)
   }
 
   render() {
-    const todoEntries = this.props.entries
-    const listItems = todoEntries.map(this.createTasks)
-
     return (
       <ul className="theList">
-        {listItems}
+        <label>
+          <input
+            type="checkbox"
+            onChange={this.handleCheckboxChange}
+            checked={this.props.done} />
+          {this.props.name}
+        </label>
       </ul>
     )
   }
