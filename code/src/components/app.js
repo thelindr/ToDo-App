@@ -7,33 +7,43 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [JSON.parse(localStorage.getItem("userSettings"))]
+      items: []
     }
   }
 
-  updateToDoList = (newtoDoItem) => {
+  componentWillMount() {
+    if (localStorage.getItem("userSettings")) {
+      this.setState(JSON.parse(localStorage.getItem("userSettings")))
+    }
+  }
+  // Add one item to list:
+  updateToDoList = text => { // Receiving a new to do item as an argument
+    if (text === ("")) { // If the userinput is none you cant add anything
+      return null
+    }
     const item = {
-      name: newtoDoItem,
+      name: text,
       id: (Date.now()),
       done: false
     }
-    localStorage.setItem("userSettings", JSON.stringify(item))
-
     this.setState({
       items: [item, ...this.state.items]
+    }, () => {
+      localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
   }
 
-  handleTodoDoneChange = (id) => {
+  handleTodoDoneChange = id => {
     const newItems = this.state.items.map(item => {
       if (item.id === id) {
         item.done = !item.done
       }
       return item
     })
-
     this.setState({
       items: newItems
+    }, () => {
+      localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
   }
 
@@ -43,13 +53,13 @@ class App extends React.Component {
         <FillInForm
           updateToDoListInApp={this.updateToDoList} />
 
-        {this.state.items.map(item => (
+        {this.state.items.map(items => (
           <ToDoItems
-            key={item.id}
-            id={item.id}
+            key={items.id} // id for computer
+            id={items.id} // id for us to see in console
             onChange={this.handleTodoDoneChange}
-            name={item.name}
-            done={item.done} />
+            name={items.name}
+            done={items.done} />
         ))}
       </div>
     )

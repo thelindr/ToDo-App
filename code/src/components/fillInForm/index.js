@@ -10,15 +10,15 @@ class FillInForm extends React.Component {
     }
   }
 
-  addItem = (event) => {
+  addItem = event => {
     this.setState({
       text: event.target.value
     })
   }
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = event => {
     event.preventDefault()
-    console.log("Trying to add todo", this.state.text)
+    // console.log("Trying to add todo", this.state.text)
     this.props.updateToDoListInApp(this.state.text) // This is the callback
     this.setState({
       text: ""
@@ -33,7 +33,7 @@ class FillInForm extends React.Component {
           <div className="inputholder">
             <input
               type="text"
-              value={this.setState.text}
+              value={this.state.text}
               onChange={this.addItem}
               placeholder="What do you want to do?" />
             <button type="submit">add</button>
