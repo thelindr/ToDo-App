@@ -7,17 +7,28 @@ class ToDoItems extends React.Component {
     this.props.onChange(this.props.id)
   }
 
+  handleDeleteButtonClicked = () => {
+    this.props.remove(this.props.id)
+  }
+
   render() {
     return (
-      <ul className="theList">
-        <label>
-          <input
-            type="checkbox"
-            onChange={this.handleCheckboxChange}
-            checked={this.props.done} />
-          {this.props.name}
-        </label>
-      </ul>
+      <div className="wrapper">
+        <div className="theList">
+          <label>
+            <input
+              type="checkbox"
+              onChange={this.handleCheckboxChange}
+              checked={this.props.done} />
+            {this.props.name}
+          </label>
+          <button
+            className="deleteButton"
+            onClick={this.handleDeleteButtonClicked}>
+            <div className="sign" />
+          </button>
+        </div>
+      </div>
     )
   }
 

@@ -28,7 +28,7 @@ class FillInForm extends React.Component {
   render() {
     return (
       <div className="fillInForm">
-        <h4>To Do:</h4>
+        <h3>To Do:</h3>
         <form onSubmit={this.handleFormSubmit}>
           <div className="inputholder">
             <input

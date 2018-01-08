@@ -1,20 +1,52 @@
-.theList {
-  list-style: none;
-  width: 55%;
-  margin: auto;
+.wrapper {
+  width: 100%;
+  height: 49px;
   margin-top: 15px;
-  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+.theList {
+  width: 60%;
   color: #333;
   background-color: pink;
   padding: 15px;
-  margin-bottom: 15px;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-label:hover {
+.theList label:hover {
   cursor: pointer
 }
 
-input:hover {
+.theList input:hover {
   cursor: pointer
+}
+
+.wrapper button {
+width: 30px;
+height: 30px;
+background-color: #a91010;
+border: none;
+border-radius: 50%;
+color: white;
+padding: 5px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+margin-left: 10px;
+display: flex;
+justify-content: center;
+}
+
+.wrapper button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.wrapper .sign {
+  width: 80%;
+  height: 3px;
+  background-color: white;
 }

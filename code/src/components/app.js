@@ -32,7 +32,7 @@ class App extends React.Component {
       localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
   }
-
+  // Function to handle when checkbox is ticked
   handleTodoDoneChange = id => {
     const newItems = this.state.items.map(item => {
       if (item.id === id) {
@@ -42,6 +42,16 @@ class App extends React.Component {
     })
     this.setState({
       items: newItems
+    }, () => {
+      localStorage.setItem("userSettings", JSON.stringify(this.state))
+    })
+  }
+
+  removeItemFromList = id => {
+    this.setState({
+      items: this.state.items.filter(item => (
+        item.id !== id
+      ))
     }, () => {
       localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
@@ -59,7 +69,8 @@ class App extends React.Component {
             id={items.id} // id for us to see in console
             onChange={this.handleTodoDoneChange}
             name={items.name}
-            done={items.done} />
+            done={items.done}
+            remove={this.removeItemFromList} />
         ))}
       </div>
     )

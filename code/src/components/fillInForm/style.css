@@ -1,5 +1,5 @@
 .fillInForm {
-  width: 55%;
+  width: 63%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -33,4 +33,8 @@ text-decoration: none;
 display: inline-block;
 font-size: 16px;
 margin-left: 10px;
+}
+
+button:hover {
+  cursor: pointer
 }
