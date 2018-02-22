@@ -1,23 +1,25 @@
 .wrapper {
-  width: 100%;
+  width: 40%;
   height: 49px;
+  margin: auto;
   margin-top: 15px;
   display: flex;
   justify-content: center;
 }
 .theList {
-  width: 60%;
+  width: 100%;
   color: #333;
-  background-color: pink;
+  background-color: #ccc9c687;
   padding: 15px;
   border-radius: 5px;
+  font-size: 17px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .theList label:hover {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .theList input:hover {
@@ -27,7 +29,7 @@
 .wrapper button {
 width: 30px;
 height: 30px;
-background-color: #a91010;
+background-color: white;
 border: none;
 border-radius: 50%;
 color: white;
@@ -48,5 +50,17 @@ justify-content: center;
 .wrapper .sign {
   width: 80%;
   height: 3px;
-  background-color: white;
+  background-color: red;
+}
+
+@media (min-width: 0px) and (max-width: 400px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 800px) {
+  .wrapper {
+    width: 70%;
+  }
 }

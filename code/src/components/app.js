@@ -1,4 +1,5 @@
 import React from "react"
+import FlipMove from "react-flip-move"
 import FillInForm from "./fillInForm/index.js"
 import ToDoItems from "./todoItems/index.js"
 
@@ -62,16 +63,17 @@ class App extends React.Component {
       <div>
         <FillInForm
           updateToDoListInApp={this.updateToDoList} />
-
-        {this.state.items.map(items => (
-          <ToDoItems
-            key={items.id} // id for computer
-            id={items.id} // id for us to see in console
-            onChange={this.handleTodoDoneChange}
-            name={items.name}
-            done={items.done}
-            remove={this.removeItemFromList} />
-        ))}
+        <FlipMove duration={250} easing="ease-out">
+          {this.state.items.map(items => (
+            <ToDoItems
+              key={items.id} // id for computer
+              id={items.id} // id for us to see in console
+              onChange={this.handleTodoDoneChange}
+              name={items.name}
+              done={items.done}
+              remove={this.removeItemFromList} />
+          ))}
+        </FlipMove>
       </div>
     )
   }
