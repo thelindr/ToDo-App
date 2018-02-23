@@ -14,12 +14,13 @@ class ToDoItems extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="theList">
+        <div id={this.props.done ? "completed" : "notCompleted"} className="theList">
           <label>
             <input
               type="checkbox"
               onChange={this.handleCheckboxChange}
-              checked={this.props.done} />
+              checked={this.props.done}
+              disabled={this.props.done} />
             {this.props.name}
           </label>
           <button

@@ -36,7 +36,7 @@ class FillInForm extends React.Component {
               value={this.state.text}
               onChange={this.addItem}
               placeholder="What do you want to do?" />
-            <button type="submit">add</button>
+            <button type="submit">Add</button>
           </div>
         </form>
       </div>

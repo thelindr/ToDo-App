@@ -6,10 +6,10 @@
   display: flex;
   justify-content: center;
 }
-.theList {
+.wrapper .theList {
   width: 100%;
-  color: #333;
-  background-color: #ccc9c687;
+  color: #000;
+  background-color: #59b6ff4f;
   padding: 15px;
   border-radius: 5px;
   font-size: 17px;
@@ -18,28 +18,30 @@
   align-items: center;
 }
 
-.theList label:hover {
-  cursor: pointer;
+#completed {
+  background-color: #80808075;
+  font-style: italic;
+  text-decoration: line-through;
 }
 
-.theList input:hover {
-  cursor: pointer
+.wrapper input {
+  margin-right: 10px;
 }
 
 .wrapper button {
-width: 30px;
-height: 30px;
-background-color: white;
-border: none;
-border-radius: 50%;
-color: white;
-padding: 5px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-margin-left: 10px;
-display: flex;
-justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .wrapper button:hover {

@@ -1,4 +1,5 @@
 import React from "react"
+import uuidv4 from "uuid/v4"
 import FlipMove from "react-flip-move"
 import FillInForm from "./fillInForm/index.js"
 import ToDoItems from "./todoItems/index.js"
@@ -24,7 +25,7 @@ class App extends React.Component {
     }
     const item = {
       name: text,
-      id: (Date.now()),
+      id: uuidv4(),
       done: false
     }
     this.setState({
@@ -33,16 +34,35 @@ class App extends React.Component {
       localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
   }
-  // Function to handle when checkbox is ticked
+  // sendToBottom = item => {
+  //   let sortedListOfItems = null
+  //   console.log("send to bottom:", item)
+  //   if (item.done === true) {
+  //     sortedListOfItems = this.state.items.concat(this.state.items.splice(item.index, 1))
+  //     this.setState({
+  //       items: sortedListOfItems
+  //     }, () => {
+  //       localStorage.setItem("userSettings", JSON.stringify(this.state))
+  //     })
+  //   }
+  // }
+
   handleTodoDoneChange = id => {
-    const newItems = this.state.items.map(item => {
+    let indexOfItemToMove = null
+    let updatedListOfItems = this.state.items.map((item, index) => {
       if (item.id === id) {
+        indexOfItemToMove = index
         item.done = !item.done
+        console.log("indexOfItemToMove", indexOfItemToMove, item.done)
       }
+      console.log("item", item.id)
       return item
     })
+    if (indexOfItemToMove !== null) {
+      updatedListOfItems = updatedListOfItems.concat(updatedListOfItems.splice(indexOfItemToMove, 1))
+    }
     this.setState({
-      items: newItems
+      items: updatedListOfItems
     }, () => {
       localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
@@ -63,7 +83,7 @@ class App extends React.Component {
       <div>
         <FillInForm
           updateToDoListInApp={this.updateToDoList} />
-        <FlipMove duration={250} easing="ease-out">
+        <FlipMove duration={250} easing="ease-in-out">
           {this.state.items.map(items => (
             <ToDoItems
               key={items.id} // id for computer
