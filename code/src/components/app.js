@@ -1,6 +1,7 @@
 import React from "react"
 import uuidv4 from "uuid/v4"
 import FlipMove from "react-flip-move"
+import EmptyList from "./emptyList/index.js"
 import FillInForm from "./fillInForm/index.js"
 import ToDoItems from "./todoItems/index.js"
 
@@ -34,18 +35,6 @@ class App extends React.Component {
       localStorage.setItem("userSettings", JSON.stringify(this.state))
     })
   }
-  // sendToBottom = item => {
-  //   let sortedListOfItems = null
-  //   console.log("send to bottom:", item)
-  //   if (item.done === true) {
-  //     sortedListOfItems = this.state.items.concat(this.state.items.splice(item.index, 1))
-  //     this.setState({
-  //       items: sortedListOfItems
-  //     }, () => {
-  //       localStorage.setItem("userSettings", JSON.stringify(this.state))
-  //     })
-  //   }
-  // }
 
   handleTodoDoneChange = id => {
     let indexOfItemToMove = null
@@ -79,23 +68,33 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <FillInForm
-          updateToDoListInApp={this.updateToDoList} />
-        <FlipMove duration={250} easing="ease-in-out">
-          {this.state.items.map(items => (
-            <ToDoItems
-              key={items.id} // id for computer
-              id={items.id} // id for us to see in console
-              onChange={this.handleTodoDoneChange}
-              name={items.name}
-              done={items.done}
-              remove={this.removeItemFromList} />
-          ))}
-        </FlipMove>
-      </div>
-    )
+    if (this.state.items.length > 0) {
+      return (
+        <div>
+          <FillInForm
+            updateToDoListInApp={this.updateToDoList} />
+          <FlipMove duration={250} easing="ease-in-out">
+            {this.state.items.map(items => (
+              <ToDoItems
+                key={items.id} // id for computer
+                id={items.id} // id for us to see in console
+                onChange={this.handleTodoDoneChange}
+                name={items.name}
+                done={items.done}
+                remove={this.removeItemFromList} />
+            ))}
+          </FlipMove>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <FillInForm
+            updateToDoListInApp={this.updateToDoList} />
+          <EmptyList />
+        </div>
+      )
+    }
   }
 
 }

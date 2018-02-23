@@ -18,7 +18,6 @@ class FillInForm extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault()
-    // console.log("Trying to add todo", this.state.text)
     this.props.updateToDoListInApp(this.state.text) // This is the callback
     this.setState({
       text: ""
