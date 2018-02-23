@@ -36,12 +36,13 @@ class App extends React.Component {
     })
   }
 
+  // mark item as done and send to bottom of the list
   handleTodoDoneChange = id => {
     let indexOfItemToMove = null
     let updatedListOfItems = this.state.items.map((item, index) => {
       if (item.id === id) {
         indexOfItemToMove = index
-        item.done = !item.done
+        item.done = true
         console.log("indexOfItemToMove", indexOfItemToMove, item.done)
       }
       console.log("item", item.id)
